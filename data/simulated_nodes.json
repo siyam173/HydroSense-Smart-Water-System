@@ -1,0 +1,141 @@
+{
+  "system_info": {
+    "project_name": "HydroSense - Smart Water Quality & Leakage Monitoring System",
+    "version": "2.4.0",
+    "deployment_zone": "Metropolitan Water Supply Grid (Zone-4)",
+    "water_rate_bdt_per_1000L": 16.50,
+    "water_rate_usd_per_1000L": 0.15,
+    "currency_symbol": "৳",
+    "emergency_hotline": "+880-1700-000000"
+  },
+  "nodes": [
+    {
+      "id": "NODE-01",
+      "name": "Central Pumping Station (Intake)",
+      "location": {
+        "lat": 23.7925,
+        "lng": 90.4078,
+        "sector": "Sector A - Main Intake",
+        "address": "Gulshan Lake Pump House"
+      },
+      "telemetry": {
+        "pressure_psi": 58.4,
+        "flow_rate_lpm": 125.0,
+        "ph": 7.4,
+        "turbidity_ntu": 2.1,
+        "tds_ppm": 185,
+        "temperature_c": 24.5,
+        "dissolved_oxygen_mg_l": 6.8
+      },
+      "solar": {
+        "battery_pct": 98,
+        "panel_volts": 18.2,
+        "charging_current_ma": 840,
+        "power_mode": "High Performance"
+      },
+      "valve": {
+        "status": "OPEN",
+        "mode": "AUTO",
+        "relay_pin": 16,
+        "last_switched": "2026-10-25 08:30:00"
+      },
+      "status": "NORMAL"
+    },
+    {
+      "id": "NODE-02",
+      "name": "Mid-Distribution Junction",
+      "location": {
+        "lat": 23.7805,
+        "lng": 90.4125,
+        "sector": "Sector B - Commercial Zone",
+        "address": "Banani 11 Trunk Pipeline"
+      },
+      "telemetry": {
+        "pressure_psi": 54.2,
+        "flow_rate_lpm": 118.5,
+        "ph": 7.3,
+        "turbidity_ntu": 3.2,
+        "tds_ppm": 195,
+        "temperature_c": 24.8,
+        "dissolved_oxygen_mg_l": 6.5
+      },
+      "solar": {
+        "battery_pct": 92,
+        "panel_volts": 17.8,
+        "charging_current_ma": 790,
+        "power_mode": "High Performance"
+      },
+      "valve": {
+        "status": "OPEN",
+        "mode": "AUTO",
+        "relay_pin": 17,
+        "last_switched": "2026-10-25 08:30:00"
+      },
+      "status": "NORMAL"
+    },
+    {
+      "id": "NODE-03",
+      "name": "Residential Distribution Sector",
+      "location": {
+        "lat": 23.7712,
+        "lng": 90.4052,
+        "sector": "Sector C - Residential Feeder",
+        "address": "Mohakhali DOHS Block D"
+      },
+      "telemetry": {
+        "pressure_psi": 51.0,
+        "flow_rate_lpm": 112.0,
+        "ph": 7.2,
+        "turbidity_ntu": 3.8,
+        "tds_ppm": 210,
+        "temperature_c": 25.1,
+        "dissolved_oxygen_mg_l": 6.2
+      },
+      "solar": {
+        "battery_pct": 87,
+        "panel_volts": 16.9,
+        "charging_current_ma": 680,
+        "power_mode": "High Performance"
+      },
+      "valve": {
+        "status": "OPEN",
+        "mode": "AUTO",
+        "relay_pin": 18,
+        "last_switched": "2026-10-25 08:30:00"
+      },
+      "status": "NORMAL"
+    },
+    {
+      "id": "NODE-04",
+      "name": "Terminal Sub-station",
+      "location": {
+        "lat": 23.7598,
+        "lng": 90.3920,
+        "sector": "Sector D - Terminal Line",
+        "address": "Tejgaon Industrial Substation"
+      },
+      "telemetry": {
+        "pressure_psi": 48.5,
+        "flow_rate_lpm": 105.2,
+        "ph": 7.1,
+        "turbidity_ntu": 4.1,
+        "tds_ppm": 225,
+        "temperature_c": 25.4,
+        "dissolved_oxygen_mg_l": 5.9
+      },
+      "solar": {
+        "battery_pct": 79,
+        "panel_volts": 15.6,
+        "charging_current_ma": 520,
+        "power_mode": "Eco Mode"
+      },
+      "valve": {
+        "status": "OPEN",
+        "mode": "AUTO",
+        "relay_pin": 19,
+        "last_switched": "2026-10-25 08:30:00"
+      },
+      "status": "NORMAL"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "name": "smart-water-system",
+  "version": "2.4.0",
+  "description": "HydroSense - Smart Water Quality & Leakage Monitoring System with Edge AI, Solenoid Valve Control, and GIS Mapping",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "iot",
+    "smart-water",
+    "water-quality",
+    "leak-detection",
+    "esp32",
+    "edge-ai",
+    "wqi"
+  ],
+  "author": "HydroSense Team",
+  "license": "MIT"
+}

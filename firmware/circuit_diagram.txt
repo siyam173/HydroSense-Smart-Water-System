@@ -1,0 +1,76 @@
+========================================================================================
+HydroSense AI: Hardware Circuit Diagram & Wiring Reference
+========================================================================================
+
+1. ESP32 PINOUT MAPPING TABLE
+----------------------------------------------------------------------------------------
+Sensor / Actuator             ESP32 Pin      Signal Type     Notes / Voltage Level
+----------------------------------------------------------------------------------------
+YF-S201 Flow Sensor           GPIO 14        Digital / Pulse 5V VCC, Pulldown, 4.7k resistor
+MPX5010DP / Pressure Sensor   GPIO 34        Analog Input    ADC1 (0-3.3V via voltage divider)
+DFRobot Analog pH Sensor      GPIO 35        Analog Input    ADC1 (Signal to GPIO35, 5V VCC)
+Turbidity Sensor              GPIO 32        Analog Input    ADC1 (Signal to GPIO32, 5V VCC)
+DS18B20 Temp Sensor (1-Wire)  GPIO 4         Digital (1-Wire) 4.7kΩ pullup to 3.3V
+12V Solenoid Valve Relay      GPIO 16        Digital Output  Optocoupled 5V Relay module IN1
+Solar Panel Voltage Divider   GPIO 33        Analog Input    R1=40kΩ, R2=10kΩ to GND (18V to 3.3V)
+Status / Alert LED            GPIO 2         Digital Output  On-board Blue LED
+----------------------------------------------------------------------------------------
+
+2. ASCII SCHEMATIC
+----------------------------------------------------------------------------------------
+
+                +-----------------------------------------------+
+                |                18V Solar Panel                |
+                +-----------------------+-----------------------+
+                                        |
+                                [Solar Charge Controller]
+                                        |
+                 +----------------------+----------------------+
+                 |                                             |
+          [12V Rechargeable LiFePO4]              [Buck Converter Step-Down]
+                 |                                      (12V -> 5V)
+                 |                                             |
+                 +----------------------+               +------+--------+
+                 |                      |               |               |
+          [12V Solenoid Valve]    [Optocoupler]    [ESP32 5V/VIN]  [Sensors 5V Rail]
+                 |                  [Relay]             |
+                 +----------------------+               |
+                                        |               |
+   (GPIO 16 Signal) --------------------+               |
+                                                        |
+   (YF-S201 Flow Pulse) --------[ GPIO 14 ]             |
+   (Pressure Sensor Sig) -------[ GPIO 34 ]             |
+   (pH Sensor Signal) ----------[ GPIO 35 ] <-----------+
+   (Turbidity Sensor) ----------[ GPIO 32 ] <-----------+
+   (DS18B20 Temp Data) ---------[ GPIO 04 ] (with 4.7k pullup to 3.3V)
+   (Solar Voltage Divider) -----[ GPIO 33 ] (40k/10k divider from 18V panel)
+   (GND Common Rail) -----------[ ESP32 GND ] <== Common Ground across all circuits!
+
+----------------------------------------------------------------------------------------
+3. SOLAR VOLTAGE DIVIDER SCHEMATIC (FOR GPIO 33)
+----------------------------------------------------------------------------------------
+
+  Solar Panel Positive (+18V Peak)
+             |
+            [ ] R1 (40 kΩ, 1%)
+             |
+             +--------> Connected to ESP32 GPIO 33 (Max 3.0V at 18V input)
+             |
+            [ ] R2 (10 kΩ, 1%)
+             |
+            GND (Common Ground)
+
+----------------------------------------------------------------------------------------
+4. COMPONENT BILL OF MATERIALS (BOM) & ESTIMATED COST (BDT & USD)
+----------------------------------------------------------------------------------------
+1. ESP32 NodeMCU Development Board (30-pin / 38-pin) - ~৳550 ($4.50)
+2. YF-S201 1/2" Hall-Effect Water Flow Sensor - ~৳350 ($3.00)
+3. MPX5010DP or MPS20N0040D Pressure Sensor - ~৳450 ($3.80)
+4. DFRobot / Gravity Analog pH Sensor Kit with BNC Probe - ~৳1,800 ($15.00)
+5. DFRobot Analog Optical Turbidity Sensor - ~৳650 ($5.50)
+6. DS18B20 Waterproof Stainless Steel Temperature Sensor - ~৳150 ($1.20)
+7. 1-Channel 5V Optocoupled Relay Module (10A 250V AC / 30V DC) - ~৳80 ($0.70)
+8. 12V DC Normally Closed (NC) Brass Solenoid Valve 1/2" - ~৳850 ($7.00)
+9. 10W - 20W Polycrystalline Solar Panel + 12V Charge Controller - ~৳1,200 ($10.00)
+10. Resistors (4.7kΩ, 40kΩ, 10kΩ), jumper wires, PVC pipe fittings - ~৳250 ($2.00)
+Total Estimated Prototype Cost: ~৳6,080 BDT ($52 USD)
